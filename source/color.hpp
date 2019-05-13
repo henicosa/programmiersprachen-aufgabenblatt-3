@@ -1,5 +1,6 @@
 # ifndef COLOR_HPP
 # define COLOR_HPP
+#include <iostream>
 
 struct Color {
   double r = 0.5;
@@ -7,4 +8,5 @@ struct Color {
   double b = 0.5;
 };
 
+std::ostream& operator<<(std::ostream& os, Color const& c);
 # endif //color.hpp

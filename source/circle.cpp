@@ -4,7 +4,8 @@ Circle::Circle() {
   r_ = 1;
 }
 
-Circle::Circle(Vec2 const& mid, float r, Color const& c) : mid_(mid), r_(r), c_(c) {
+Circle::Circle(Vec2 const& mid, float r, Color const& c, std::string const&  name)
+ : mid_(mid), r_(r), c_(c), name_(name) {
   higlight_color_ = Color{1-c.r,1-c.g,1-c.b};
 }
 
@@ -37,4 +38,23 @@ bool Circle::is_inside(Vec2 const& point){
   } else {
     return false;
   }
+}
+
+std::string const& Circle::get_name() const {
+  return name_;
+}
+
+std::ostream& Circle::print(std::ostream& os) const {
+  os << "Hi, ich bin ein Kreis und heiße " << name_ << ".\n";
+  os << "Ihr findet mich an der Position x: " << mid_.x << " y:" << mid_.y << ".\n";
+  os << "Ich bin mittlerweile schon " << r_ *2 << " LE breit.\n";
+  os << "Ihr könnt mich gut an meiner " << c_ << " Farbe erkennen.\n";
+};
+
+std::ostream& operator<<(std::ostream& os, Circle const& circ) {
+  return circ.print(os);
+}
+
+bool operator<(Circle const& c1, Circle const& c2) {
+  return (c1.get_name() < c2.get_name());
 }
