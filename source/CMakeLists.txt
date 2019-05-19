@@ -1,3 +1,7 @@
+add_executable(aufgabe_11
+  aufgabe_11.cpp
+)
+
 add_executable(aufgabe_9
   aufgabe_9.cpp
 )
