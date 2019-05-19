@@ -11,7 +11,7 @@ int main() {
   for(int i = 0; i < 100; i++) {
     int num = std::rand() % 101;
     random_list.push_front(num);
-    //std::cout << num << ", ";
+    std::cout << num << ", ";
   }
   std::cout << "\n";
   std::set<int> random_set;
@@ -24,6 +24,12 @@ int main() {
     }   
   }
   std::cout << "\n";
+  // Exercise 3.10
+  std::vector<int> copy_vector (100);
+  std::copy (random_list.begin(), random_list.end(), copy_vector.begin());
+  for(auto element : random_list) {
+    std::cout << element << " # ";
+  }
   // Exercise 3.3
   // with map
   std::map<int,int> frequencies_map;

@@ -27,8 +27,8 @@ int main () {
   std::ostream_iterator <int>( std::cout , "\n"));
   std::cout << "\n";
 
-  std::generate ( std::begin ( v_0 ) , std :: end ( v_0 ) , std :: rand % 10);
-  std::copy ( v_0.crbegin () , v_0 . crend () ,
-    std::ostream_iterator <int>( std :: cout , "\n"));
+  std::generate(std::begin(v_0) ,std::end(v_0) , std::rand);
+  std::copy (v_0.crbegin() , v_0.crend() ,
+    std::ostream_iterator<int>(std::cout, "\n"));
   return 0;
 }
