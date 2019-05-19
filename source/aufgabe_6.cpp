@@ -15,11 +15,13 @@ int main() {
   container.push_back(Circle(Vec2{double(100), 100}, 64, Color{50,10,150}));
   container.push_back(Circle(Vec2{double(100), 100}, 5, Color{50,100,150}));
   container.push_back(Circle(Vec2{double(100), 100}, 12, Color{50,100,150}));
-  std::sort(container.begin(), container.end());
+  //std::sort(container.begin(), container.end());
   //exercise 3.7
   /*
   std::sort(container.begin(), container.end(), [] (Circle& lhs, Circle& rhs) -> bool{return lhs < rhs;});
   */
+  //exercise 3.8
+  std::sort(container.begin(), container.end(), std::less{});
   std::cout << container[0] << container[1];
   //REQUIRE(std::is_sorted(container.begin(), container.end()));
   std::cout << std::is_sorted(container.begin(), container.end());
