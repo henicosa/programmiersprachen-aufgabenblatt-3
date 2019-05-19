@@ -44,11 +44,16 @@ std::string const& Circle::get_name() const {
   return name_;
 }
 
+double Circle::get_radius() const {
+  return r_;
+}
+
 std::ostream& Circle::print(std::ostream& os) const {
   os << "Hi, ich bin ein Kreis und heiße " << name_ << ".\n";
-  os << "Ihr findet mich an der Position x: " << mid_.x << " y:" << mid_.y << ".\n";
+  os << "Ihr findet mich an der Position x: " << mid_.x << " y: " << mid_.y << ".\n";
   os << "Ich bin mittlerweile schon " << r_ *2 << " LE breit.\n";
-  os << "Ihr könnt mich gut an meiner " << c_ << " Farbe erkennen.\n";
+  os << "Ihr könnt mich gut an meiner " << c_ << " Farbe erkennen.\n" << "\n";
+  return os;
 };
 
 std::ostream& operator<<(std::ostream& os, Circle const& circ) {
@@ -56,5 +61,25 @@ std::ostream& operator<<(std::ostream& os, Circle const& circ) {
 }
 
 bool operator<(Circle const& c1, Circle const& c2) {
-  return (c1.get_name() < c2.get_name());
+  if (c1.get_name() != c2.get_name()) {
+    return (c1.get_name() < c2.get_name());
+  } else {
+    return (c1.get_radius() < c2.get_radius());
+  }
+}
+
+bool operator>(Circle const& c1, Circle const& c2) {
+  if (c1.get_name() != c2.get_name()) {
+    return (c1.get_name() > c2.get_name());
+  } else {
+    return (c1.get_radius() > c2.get_radius());
+  }
+}
+
+bool operator==(Circle const& c1, Circle const& c2) {
+  if (c1.get_name() != c2.get_name()) {
+    return false;
+  } else {
+    return (c1.get_radius() == c2.get_radius());
+  }
 }

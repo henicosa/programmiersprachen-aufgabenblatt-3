@@ -3,6 +3,7 @@ add_executable(aufgabe_2_und_3
 )
 
 add_executable(aufgabe_6
+  glew.c
   aufgabe_6.cpp
   circle.cpp
   color.cpp

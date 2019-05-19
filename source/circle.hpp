@@ -23,6 +23,7 @@ public:
   bool is_inside(const Vec2& point);
   std::ostream& print(std::ostream& os) const;
   std::string const& get_name() const;
+  double get_radius() const;
 private:
   Vec2 mid_;//vector to the circles middle
   float r_; //radius
@@ -33,5 +34,7 @@ private:
 
 std::ostream& operator<<(std::ostream& os, Circle const& circ);
 bool operator<(Circle const& c1, Circle const& c2);
+bool operator>(Circle const& c1, Circle const& c2);
+bool operator==(Circle const& c1, Circle const& c2);
 
 # endif //circle.hpp

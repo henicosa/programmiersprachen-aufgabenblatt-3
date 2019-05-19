@@ -3,13 +3,27 @@
 #include <iostream>
 #include <array>
 #include <map>
+#include <set>
 
 int main() {
   // Exercise 3.2
   std::list<unsigned int> random_list;
   for(int i = 0; i < 100; i++) {
-    random_list.push_front(std::rand() % 101);
+    int num = std::rand() % 101;
+    random_list.push_front(num);
+    //std::cout << num << ", ";
   }
+  std::cout << "\n";
+  std::set<int> random_set;
+  for(auto element : random_list) {
+    random_set.insert(element);
+  }
+  for(int i = 0; i < 101; i++) {
+    if(random_set.find(i) == random_set.end()) {
+      std::cout << i << " , ";
+    }   
+  }
+  std::cout << "\n";
   // Exercise 3.3
   // with map
   std::map<int,int> frequencies_map;
