@@ -33,7 +33,7 @@ TEST_CASE ( " filter alle vielfache von drei " , " [ erase ] " )
   v.erase( std::remove_if(v.begin(), v.end(), 
   [] (int i) -> bool{return !is_multiple_of_3(i);}), v.end());
 
-  REQUIRE(std::all_of( v.begin() , v.end(), is_multiple_of_3));
+  REQUIRE(std::all_of( v.cbegin() , v.cend(), is_multiple_of_3));
 
   // Exercise 3.12
   std::vector<int> v_1{1 ,2 ,3 ,4 ,5 ,6 ,7 ,8 ,9};
@@ -43,9 +43,9 @@ TEST_CASE ( " filter alle vielfache von drei " , " [ erase ] " )
   std::transform(v_1.begin(), v_1.end(), v_2.begin(), v_3.begin(),
   [] (int a, int b) -> int{return a+b;});
 
-  std::copy(v_3.begin(), v_3.end(), v_1.begin());
+  std::copy(v_3.cbegin(), v_3.cend(), v_1.begin());
 
-  REQUIRE(std::all_of( v_3.begin() , v_3.end(), 
+  REQUIRE(std::all_of( v_3.cbegin() , v_3.cend(), 
   [] (int i) -> bool{return i == 10;}));
 
   // Exercise 3.13
@@ -54,7 +54,7 @@ TEST_CASE ( " filter alle vielfache von drei " , " [ erase ] " )
   for (auto & v : all_even) {
     std::cout << v << " ";
   }
-  REQUIRE(std::all_of( all_even.begin() , all_even.end(), [] (int i) -> bool{return !is_even(i);}));
+  REQUIRE(std::all_of( all_even.cbegin() , all_even.cend(), [] (int i) -> bool{return !is_even(i);}));
 }
 int main (int argc , char* argv[])
 {

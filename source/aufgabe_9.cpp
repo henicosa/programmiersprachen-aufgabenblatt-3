@@ -19,7 +19,7 @@ int main () {
   std::list<int> l_1(std::cbegin(l_0) ,std::cend(l_0));
   std::reverse(std::begin(l_1) ,std::end(l_1));
   std::copy (std::cbegin(l_1) ,std::cend(l_1),
-    std::ostream_iterator<int>(std::cout, "\n" ));
+  std::ostream_iterator<int>(std::cout, "\n" ));
   std::cout << "\n";
 
   l_1.sort();
@@ -29,6 +29,6 @@ int main () {
 
   std::generate(std::begin(v_0) ,std::end(v_0) , std::rand);
   std::copy (v_0.crbegin() , v_0.crend() ,
-    std::ostream_iterator<int>(std::cout, "\n"));
+  std::ostream_iterator<int>(std::cout, "\n"));
   return 0;
 }

@@ -26,7 +26,7 @@ int main() {
   std::cout << "\n";
   // Exercise 3.10
   std::vector<int> copy_vector (100);
-  std::copy (random_list.begin(), random_list.end(), copy_vector.begin());
+  std::copy (random_list.cbegin(), random_list.cend(), copy_vector.begin());
   for(auto element : random_list) {
     std::cout << element << " # ";
   }

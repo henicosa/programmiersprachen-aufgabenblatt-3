@@ -24,15 +24,14 @@ TEST_CASE ( " teste die aufgaben " , " [ exercises ] " ) {
   //exercise 3.8
   std::sort(container.begin(), container.end(), std::less{});
   std::cout << container[0] << container[1];
-  REQUIRE(std::is_sorted(container.begin(), container.end()));
-  std::cout << std::is_sorted(container.begin(), container.end());
+  REQUIRE(std::is_sorted(container.cbegin(), container.cend()));
 
   // Exercise 3.14
   std::vector<Circle> small_circles(container.size());
   auto filter_lambda = [] (Circle c) -> bool{return c.get_radius() <= 4;};
-  small_circles.erase(std::copy_if(container.begin(), container.end() ,
+  small_circles.erase(std::copy_if(container.cbegin(), container.cend() ,
   small_circles.begin(), filter_lambda), small_circles.end());
-  REQUIRE(std::all_of(small_circles.begin(), small_circles.end(), 
+  REQUIRE(std::all_of(small_circles.cbegin(), small_circles.cend(), 
   [] (Circle c) -> bool{return c.get_radius() < 4;}));
 }
 
