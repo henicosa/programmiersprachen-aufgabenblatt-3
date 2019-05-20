@@ -4,17 +4,18 @@
 #include "circle.hpp"
 #include <iostream>
 #include <algorithm>
+#include <functional>
 
 // Include von File aus einer Fremdbibliothek
 # include <catch.hpp>
 
-int main() {
+TEST_CASE ( " teste die aufgaben " , " [ exercises ] " ) {
   std::vector<Circle> container{};
-  container.push_back(Circle(Vec2{double(100), 100}, 40, Color{50,10,150}));
-  container.push_back(Circle(Vec2{double(100), 100}, 111, Color{50,10,150}));
-  container.push_back(Circle(Vec2{double(100), 100}, 64, Color{50,10,150}));
+  container.push_back(Circle(Vec2{double(100), 100}, 5, Color{50,10,150}));
+  container.push_back(Circle(Vec2{double(100), 100}, 3, Color{50,10,150}));
+  container.push_back(Circle(Vec2{double(100), 100}, 8, Color{50,10,150}));
+  container.push_back(Circle(Vec2{double(100), 100}, 1, Color{50,100,150}));
   container.push_back(Circle(Vec2{double(100), 100}, 5, Color{50,100,150}));
-  container.push_back(Circle(Vec2{double(100), 100}, 12, Color{50,100,150}));
   //std::sort(container.begin(), container.end());
   //exercise 3.7
   /*
@@ -23,7 +24,18 @@ int main() {
   //exercise 3.8
   std::sort(container.begin(), container.end(), std::less{});
   std::cout << container[0] << container[1];
-  //REQUIRE(std::is_sorted(container.begin(), container.end()));
+  REQUIRE(std::is_sorted(container.begin(), container.end()));
   std::cout << std::is_sorted(container.begin(), container.end());
-  return 0;
+
+  // Exercise 3.14
+  std::vector<Circle> small_circles(container.size());
+  auto filter_lambda = [] (Circle c) -> bool{return c.get_radius() <= 4;};
+  small_circles.erase(std::copy_if(container.begin(), container.end() ,
+  small_circles.begin(), filter_lambda), small_circles.end());
+  REQUIRE(std::all_of(small_circles.begin(), small_circles.end(), 
+  [] (Circle c) -> bool{return c.get_radius() < 4;}));
+}
+
+int main(int argc , char* argv[]) {
+  return Catch::Session().run( argc, argv );
 }
