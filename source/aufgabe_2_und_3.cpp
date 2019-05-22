@@ -19,7 +19,7 @@ int main() {
     random_set.insert(element);
   }
   for(int i = 0; i < 101; i++) {
-    if(random_set.find(i) == random_set.end()) {
+    if(random_set.find(i) == random_set.cend()) {
       std::cout << i << " , ";
     }   
   }

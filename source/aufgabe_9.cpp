@@ -11,7 +11,7 @@ int main () {
   for (auto & v : v_0) {
     v = std::rand() % 10;
   }
-  std::copy (std::cbegin( v_0 ) ,std::cend( v_0 ) ,
+  std::copy(std::cbegin( v_0 ) ,std::cend( v_0 ) ,
     std::ostream_iterator<int>(std::cout, "\n"));
   std::cout << "\n";
 
